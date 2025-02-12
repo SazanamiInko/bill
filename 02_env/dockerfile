@@ -1,0 +1,14 @@
+# PostgreSQLの公式イメージをベースにする
+FROM postgres:16
+
+# 環境変数の設定（コンテナ起動時に変更可能）
+ENV POSTGRES_USER=myuser
+ENV POSTGRES_PASSWORD=mypassword
+ENV POSTGRES_DB=mydatabase
+
+# 初期データベースのセットアップスクリプトをコピー
+COPY init.sql /docker-entrypoint-initdb.d/
+
+# 設定ファイルをカスタマイズ（任意）
+COPY postgresql.conf /etc/postgresql/postgresql.conf
+RUN chmod 644 /etc/postgresql/postgresql.conf

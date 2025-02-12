@@ -1,0 +1,8 @@
+次のコマンドを実行してDockerImageを作成する。
+docker build -t my-postgres .
+
+次のコマンドを実行してコンテナの作成と起動を行う。
+docker run -d --name my-postgres-container -p 5432:5432 -e POSTGRES_USER=myuser -e POSTGRES_PASSWORD=mypassword -e POSTGRES_DB=mydatabase my-postgres
+
+コンテナにアクセスしてDBServerにアクセスする。
+docker exec -it my-postgres-container psql -U myuser -d mydatabase  
