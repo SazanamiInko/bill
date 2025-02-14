@@ -2,7 +2,7 @@
 docker build -t bill_image .
 
 次のコマンドを実行してコンテナの作成と起動を行う。
-docker run -d --name my-postgres-container -p 5432:5432 -e POSTGRES_USER=myuser -e POSTGRES_PASSWORD=mypassword -e POSTGRES_DB=mydatabase my-postgres
+docker run -d --name bill_container -p 5432:5432 -e POSTGRES_USER=myuser -e POSTGRES_PASSWORD=mypassword -e POSTGRES_DB=mydatabase bill_image
 
 コンテナにアクセスしてDBServerにアクセスする。
-docker exec -it my-postgres-container psql -U myuser -d mydatabase  
+docker exec -it bill_container psql -U myuser -d mydatabase  
